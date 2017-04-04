@@ -2,6 +2,28 @@
 //solution: Use Node.js to perform the profile lookups and serve our template via http.
 
 //1.Create a web server.
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((request, response) => {
+  response.statusCode = 200;
+  response.setHeader('Content-Type', 'text/plain');
+  // setInterval runs after the end statement which means it never loads on screen
+  // setInterval(function() {
+  //   response.write("This is before the end\n");
+  //   response.write(new Date() + "\n");
+  // }, 1000);
+  response.write("This is before the end\n");
+  response.write(new Date() + "\n");
+
+  response.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 //2. Handle HTTP route GET / and POST i.e. Home
   //if url === "/" && GET
