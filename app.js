@@ -8,17 +8,7 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((request, response) => {
-  response.statusCode = 200;
-  response.setHeader('Content-Type', 'text/plain');
-  // setInterval runs after the end statement which means it never loads on screen
-  // setInterval(function() {
-  //   response.write("This is before the end\n");
-  //   response.write(new Date() + "\n");
-  // }, 1000);
-  response.write("This is before the end\n");
-  response.write(new Date() + "\n");
-
-  response.end('Hello World\n');
+  homeRoute(request, response);
 });
 
 server.listen(port, hostname, () => {
@@ -26,11 +16,20 @@ server.listen(port, hostname, () => {
 });
 
 //2. Handle HTTP route GET / and POST i.e. Home
-  //if url === "/" && GET
+  function homeRoute(request, response) {
+    //if url === "/" && GET
+    if (request.url === "/") {
+      response.statusCode = 200;
+      response.setHeader('Content-Type', 'text/plain');
+      response.write("Header\n");
+      response.write("Search\n");
+      response.end('Footer\n');
     //show search field
+    }
   //if url == "/" && POST
     //rediredt to /:username
 
+  }
 //3. Handle HTTP route GET /:username i.e. /chrisunderwood
   //if url=="/..." ... = anything
     //get json from Treehouse
