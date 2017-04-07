@@ -1,7 +1,7 @@
 const Profile = require("./profile.js");
 const renderer = require('./renderer.js');
 const querystring = require('querystring');
-//let commonHeaders = ("Content-Type", "text/plain");
+const commonHeaders = ["Content-Type", "text/html"];
 
 // Handle HTTP route GET / and POST i.e. Home
   function homeRoute(request, response) {
@@ -23,7 +23,8 @@ const querystring = require('querystring');
             //extract the username
             let query = querystring.parse(postBody.toString());
             //redirect to /:username
-            response.write(query.username);
+            response.statusCode = 303;
+            response.setHeader("location", ["/" + query.username]);
             response.end();
           });
 
