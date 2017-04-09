@@ -30,8 +30,6 @@ const commonHeaders = ["Content-Type", "text/html"];
 
       }
     }
-
-
   }
 // Handle HTTP route GET /:username i.e. /chrisunderwood
   function userRoute(request, response){
